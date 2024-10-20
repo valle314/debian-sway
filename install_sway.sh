@@ -45,8 +45,10 @@
 # ninja -C build/
 # ninja -C build/ install
 # cd ..
+# cp -R $HOME/.local/share/wayland-protocols/ /usr/share/
 
-# https://github.com/swaywm/sway --branch 1.10-rc3
+# git clone https://github.com/swaywm/sway --branch 1.10-rc3
+# sudo apt install libjson-c-dev
 # cd ./sway
 # meson setup --prefix=$HOME/.local builddir/
 # ninja -C builddir/
