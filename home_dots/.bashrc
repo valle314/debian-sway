@@ -24,9 +24,3 @@ alias de_to_ru='trans -brief de:ru'
 alias ru_to_de='trans -brief ru:de'
 
 alias vit='vit list'
-. "$HOME/.cargo/env"
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"

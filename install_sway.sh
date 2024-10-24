@@ -9,6 +9,7 @@
 # ninja -C builddir/
 # ninja -C builddir/ install
 # cd ..
+# rm -rf ./libinput
 
 # git clone https://gitlab.freedesktop.org/mesa/drm --branch libdrm-2.4.122
 # mv ./drm ./libdrm
@@ -17,12 +18,7 @@
 # ninja -C builddir/
 # ninja -C builddir/ install
 # cd ..
-
-# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/x86_64-linux-gnu/:$HOME/.local/lib/
-# export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/lib/x86_64-linux-gnu/
-# export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/lib/
-# export C_INCLUDE_PATH=$C_INCLUDE_PATH:$HOME/.local/include/
-# export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/.local/lib/x86_64-linux-gnu/pkgconfig/
+# rm -rf ./libdrm
 
 # git clone https://gitlab.freedesktop.org/emersion/libliftoff --branch v0.5.0
 # cd libliftoff
@@ -30,7 +26,7 @@
 # ninja -C builddir/
 # ninja -C builddir/ install
 # cd ..
-
+# rm -rf ./libliftoff
 
 # git clone https://gitlab.freedesktop.org/wlroots/wlroots --branch 0.18.0
 # cd wlroots 
@@ -41,11 +37,11 @@
 # git clone https://gitlab.freedesktop.org/wayland/wayland-protocols --branch 1.38
 # cd ..
 # meson setup --prefix=$HOME/.local build/
-# # meson setup --prefix=/usr build/ # TODO this should be temporary ...
 # ninja -C build/
 # ninja -C build/ install
 # cd ..
-# cp -R $HOME/.local/share/wayland-protocols/ /usr/share/
+# rm -rf ./wlroots
+# sudo cp -R $HOME/.local/share/wayland-protocols/ /usr/share/
 
 # git clone https://github.com/swaywm/sway --branch 1.10-rc3
 # sudo apt install libjson-c-dev
@@ -54,6 +50,7 @@
 # ninja -C builddir/
 # ninja -C builddir/ install
 # cd ..
+# rm -rf ./sway
 
 # mkdir -p $HOME/.config/sway
-# cp ./sway/config $HOME/.config/sway
+# cp ./sway_config/config $HOME/.config/sway

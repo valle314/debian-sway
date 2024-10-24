@@ -25,7 +25,7 @@ exec_always --no-startup-id autotiling-rs
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-output * bg ~/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg ~/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #

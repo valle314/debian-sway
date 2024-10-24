@@ -4,8 +4,11 @@ PATH=$PATH:~/.local/bin
 PATH=$PATH:~/.local/scripts
 
 # c and c++ include path
-export CPATH=~/.local/c_libraries/include
-export LIBRARY_PATH=~/.local/c_libraries/lib
+export CPATH=$CPATH:$HOME/.local/c_libraries/include
+export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/c_libraries/lib
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/.local/lib/x86_64-linux-gnu/pkgconfig/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/x86_64-linux-gnu/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/
 
 export TASKRC=~/.config/task/.taskrc
 export TASKDATA=~/.local/share/task/.task task list
@@ -21,9 +24,3 @@ export NOTEROOT=~/docs/notes
 export SESSIONS=~/dev/sessions
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-. "$HOME/.cargo/env"
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
