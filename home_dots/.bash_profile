@@ -6,7 +6,7 @@ PATH=$PATH:~/.local/scripts
 # c and c++ include path
 export CPATH=$CPATH:$HOME/.local/c_libraries/include
 export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/c_libraries/lib
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/.local/lib/x86_64-linux-gnu/pkgconfig/
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/.local/lib/x86_64-linux-gnu/pkgconfig/:$HOME/.local/share/pkgconfig
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/x86_64-linux-gnu/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/
 
