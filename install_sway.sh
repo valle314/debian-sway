@@ -18,9 +18,6 @@ ninja -C builddir/ install
 cd ..
 rm -rf ./drm
 
-cp ./home_dots/.bash* $HOME/
-source $HOME/.bash_profile
-
 git clone https://gitlab.freedesktop.org/emersion/libliftoff --branch v0.5.0 --single-branch --depth 1
 cd libliftoff
 meson setup --prefix=$HOME/.local builddir/

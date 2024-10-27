@@ -12,3 +12,6 @@ sudo mkdir -p /boot/grub/
 sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="quiet loglevel=2 nvidia_drm.modeset=1"/' /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+cp -r ./home_dots/.bash* $HOME/
+
+echo "reboot your pc"

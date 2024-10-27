@@ -46,6 +46,7 @@
 # mkdir -p ~/dev/sessions
 
 
+# autotiling
 # git clone https://github.com/ammgws/autotiling-rs --branch v0.1.3
 # cd autotiling-rs
 # cargo build --release
@@ -53,9 +54,9 @@
 # cd ..
 # sudo rm -rf ./autotiling-rs
  
-# ranger
-# echo "----------------------------------------------------------------------------ranger----------------------------------------------------------------------------"
+# yazi # TODO
 # mkdir -p ~/.local/share/trash
+# UND CONFIG
  
 # dragon
 # echo "----------------------------------------------------------------------------dragon----------------------------------------------------------------------------"
