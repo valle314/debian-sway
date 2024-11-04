@@ -1,21 +1,20 @@
 #!/bin/bash
 
 # user dirs
-mkdir -p ~/.local/bin
-cp -r scripts ~/.local/
+mkdir -p $HOME/.local/bin
+cp -r scripts $HOME/.local/
 
-sudo apt install --no-install-recommends -y imagemagick fzf unzip zip tar fd-find
-sudo apt install -y udiskie 
+sudo apt install --no-install-recommends -y imagemagick fzf unzip zip tar fd-find udiskie curl 
  
-sudo rm -rf ~/.config/mimeapps.list
-cp -r home_dots/.config/mimeapps.list ~/.config/
+sudo rm -rf $HOME/.config/mimeapps.list
+cp -r home_dots/.config/mimeapps.list $HOME/.config/
  
-sudo rm -rf ~/.config/user-dirs.dirs
-sudo rm -rf ~/.config/user-dirs.locale
-touch ~/.config/user-dirs.dirs
-touch ~/.config/user-dirs.locale
+sudo rm -rf $HOME/.config/user-dirs.dirs
+sudo rm -rf $HOME/.config/user-dirs.locale
+touch $HOME/.config/user-dirs.dirs
+touch $HOME/.config/user-dirs.locale
  
-cat <<EOT >> ~/.config/user-dirs.dirs
+cat <<EOT >> $HOME/.config/user-dirs.dirs
 XDG_DESKTOP_DIR="\$HOME/desktop"
 XDG_DOWNLOAD_DIR="\$HOME/downloads"
 XDG_TEMPLATES_DIR="\$HOME/templates"
@@ -26,20 +25,24 @@ XDG_PICTURES_DIR="\$HOME/pics"
 XDG_VIDEOS_DIR="\$HOME/videos"
 EOT
  
-cat <<EOT >> ~/.config/user-dirs.locale
+cat <<EOT >> $HOME/.config/user-dirs.locale
 en_US
 EOT
  
-mkdir -p ~/desktop
-mkdir -p ~/downloads
-mkdir -p ~/public
-mkdir -p ~/docs
-mkdir -p ~/music
-mkdir -p ~/pics
-mkdir -p ~/pics/screenshots
-mkdir -p ~/pics/wallpaper
-mkdir -p ~/videos
-cp -r ./wallpaper/my_wallpaper.jpg ~/pics/wallpaper/
+mkdir -p $HOME/desktop
+mkdir -p $HOME/downloads
+mkdir -p $HOME/public
+mkdir -p $HOME/docs
+mkdir -p $HOME/music
+mkdir -p $HOME/pics
+mkdir -p $HOME/pics/screenshots
+mkdir -p $HOME/pics/wallpaper
+mkdir -p $HOME/videos
+cp -r ./wallpaper/my_wallpaper.jpg $HOME/pics/wallpaper/
+
+# rust 
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. $HOME/.cargo/env
 
 # autotiling
 git clone https://github.com/ammgws/autotiling-rs --branch v0.1.3 --single-branch --depth 1
@@ -50,24 +53,29 @@ cd ..
 sudo rm -rf ./autotiling-rs
  
 # yazi # TODO
-# mkdir -p ~/.local/share/trash
-# UND CONFIG
+mkdir -p $HOME/.local/share/trash 
+sudo apt install --no-install-recommends -y file 
+git clone https://github.com/sxyazi/yazi --branch v0.3.3 --single-branch --depth 1
+cd ./yazi
+cargo build --release --locked
+cp -r ./target/release/yazi $HOME/.local/bin/
+cd ..
+sudo rm -rf ./yazi
  
 # dragon
 git clone https://github.com/mwh/dragon --branch v1.2.0 --single-branch --depth 1
 cd dragon
 make 
-cp -r ./dragon ~/.local/bin/
+cp -r ./dragon $HOME/.local/bin/
 cd ..
 sudo rm -rf ./dragon
 
 # neovim
-# for neovim sessions
-mkdir -p ~/dev/sessions
-sudo apt install --no-install-recommends -y ripgrep latexmk wl-clipboard python3-pynvim curl
+mkdir -p $HOME/dev/sessions
+sudo apt install --no-install-recommends -y ninja-build gettext cmake unzip curl build-essential ripgrep wl-clipboard curl # python3-pynvim
 git clone https://github.com/neovim/neovim --branch v0.10.2 --single-branch --depth 1
 cd neovim
-make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=~/.local
+make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/.local
 make install
 cd ..
 sudo rm -rf ./neovim
@@ -79,20 +87,21 @@ sudo apt install --no-install-recommends -y sioyek
 sudo apt install --no-install-recommends -y fuzzel
  
 # mpv
-sudo apt install -y ffmpeg libavfilter-dev libass-dev libmpv-dev 
-git clone https://github.com/mpv-player/mpv --branch v0.35.1 --single-branch --depth 1 # v0.37.0, v0.38.0, v0.39.0
+# sudo apt install -y ffmpeg libavfilter-dev libass-dev libmpv-dev 
+sudo apt install --no-install-recommends -y ffmpeg libavfilter-dev libass-dev libmpv-dev 
+git clone https://github.com/mpv-player/mpv --branch v0.38.0 --single-branch --depth 1 # v0.35.1 v0.37.0 v0.38.0 v0.39.0
 cd ./mpv
 mkdir -p subprojects
-git clone https://code.videolan.org/videolan/libplacebo --branch v6.338 --single-branch --depth 1 --recursive subprojects/libplacebo # v7.349.0
+git clone https://code.videolan.org/videolan/libplacebo --branch v7.349.0 --single-branch --depth 1 --recursive subprojects/libplacebo # v6.338 v7.349.0
 meson setup build --default-library=static
 meson compile -C build
-cp -r ./build/mpv ~/.local/bin
+cp -r ./build/mpv $HOME/.local/bin
 cd ..
 
-sudo rm -rf ~/.local/share/applications/mpv.desktop 
-mkdir -p ~/.local/share/applications/
-touch ~/.local/share/applications/mpv.desktop
-cat <<EOT >> ~/.local/share/applications/mpv.desktop
+sudo rm -rf $HOME/.local/share/applications/mpv.desktop 
+mkdir -p $HOME/.local/share/applications/
+touch $HOME/.local/share/applications/mpv.desktop
+cat <<EOT >> $HOME/.local/share/applications/mpv.desktop
 [Desktop Entry]
 Type=Application
 Name=mpv Media Player
@@ -107,61 +116,46 @@ sudo rm -rf ./mpv
 
 
 # grim, slurp, swappy for screenshots
-sudo apt install --no-install-recommends -y scdoc
+sudo apt install --no-install-recommends -y scdoc grim slurp
 git clone https://github.com/jtheoof/swappy --branch v1.5.1 --single-branch
 cd swappy 
 meson setup build
 ninja -C build
-sudo rm ~/.local/bin/swappy
-cp ./build/swappy ~/.local/bin/
+sudo rm $HOME/.local/bin/swappy
+cp ./build/swappy $HOME/.local/bin/
 cd ..
 sudo rm -rf ./swappy
-
-sudo apt install --no-install-recommends -y grim slurp
 
 # hyprpicker
 git clone https://github.com/hyprwm/hyprpicker --branch v0.1.1 --single-branch
 cd hyprpicker
 make all
-sudo rm ~/.local/bin/hyprpicker
-cp ./build/hyprpicker ~/.local/bin/
+sudo rm $HOME/.local/bin/hyprpicker
+cp ./build/hyprpicker $HOME/.local/bin/
 cd ..
 sudo rm -rf ./hyprpicker
  
 # swayimg
-# sudo apt install --no-install-recommends -y libjson-c-dev
-# 
-# git clone https://github.com/artemsen/swayimg --branch v2.2 --single-branch --depth 1 # v3.4
-# cd ./swayimg
-# meson setup build --buildtype=release 
-# meson compile -C build
-# cp ./build/swayimg ~/.local/bin
-# cd ..
-# 
-# sudo rm -rf ./swayimg
-# 
-# # waybar
-# echo "----------------------------------------------------------------------------waybar----------------------------------------------------------------------------"
-# # sudo apt install --no-install-recommends -y clang-tidy gobject-introspection libdbusmenu-gtk3-dev libevdev-dev libfmt-dev libgirepository1.0-dev libgtk-3-dev libgtkmm-3.0-dev libinput-dev libjsoncpp-dev libmpdclient-dev libnl-3-dev libnl-genl-3-dev libpulse-dev libsigc++-2.0-dev libspdlog-dev libwayland-dev scdoc upower libxkbregistry-dev libupower-glib-dev libwireplumber-0.4-dev libsndio-dev libgtk-layer-shell-dev libplayerctl-dev libjack-dev libhdate-dev
-# git clone https://github.com/Alexays/Waybar --branch 0.10.0 --single-branch --recursive --depth 1
-# cd Waybar
-# meson setup build --default-library=static --buildtype=release -Dexperimental=true
-# meson compile -C build
-# cp ./build/waybar ~/.local/bin
-# cd ..
-# sudo rm -rf ./Waybar
+sudo apt install --no-install-recommends -y libjson-c-dev
+git clone https://github.com/artemsen/swayimg --branch v3.4 --single-branch --depth 1 # v2.2 v3.4
+cd ./swayimg
+meson setup build --buildtype=release 
+meson compile -C build
+cp ./build/swayimg $HOME/.local/bin
+cd ..
+sudo rm -rf ./swayimg
 
 # yt-dlp
 sudo apt install --no-install-recommends -y ffmpeg 
 git clone https://github.com/yt-dlp/yt-dlp --branch 2024.10.07 --single-branch --depth 1
 cd ./yt-dlp
 make yt-dlp
-cp -r ./yt-dlp ~/.local/bin/yt-dlp
+cp -r ./yt-dlp $HOME/.local/bin/yt-dlp
 cd ..
 sudo rm -rf ./yt-dlp
  
 # dunst and authentication Agent
-sudo apt install -y dunst polkit-kde-agent-1 
+# sudo apt install -y dunst polkit-kde-agent-1 
  
 # pavucontrol
 sudo apt install --no-install-recommends -y pavucontrol 
@@ -171,11 +165,11 @@ sudo apt install --no-install-recommends -y libdbus-glib-1-2 libasound2
 curl 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/131.0.3/linux-x86_64/en-US/firefox-131.0.3.tar.bz2' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate, br' -H 'Referer: https://www.mozilla.org/' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-Fetch-Dest: document' -H 'Sec-Fetch-Mode: navigate' -H 'Sec-Fetch-Site: cross-site' -o firefox.tar.bz2
 tar -xjf ./firefox.tar.bz2
 sudo rm -rf ./firefox.tar.bz2
-mv ./firefox ~/.local/share/ 
-sudo rm ~/.local/share/applications/firefox-stable.desktop
-mkdir -p ~/.local/share/applications/
-touch ~/.local/share/applications/firefox-stable.desktop
-cat <<EOT >> ~/.local/share/applications/firefox-stable.desktop
+mv ./firefox $HOME/.local/share/ 
+sudo rm $HOME/.local/share/applications/firefox-stable.desktop
+mkdir -p $HOME/.local/share/applications/
+touch $HOME/.local/share/applications/firefox-stable.desktop
+cat <<EOT >> $HOME/.local/share/applications/firefox-stable.desktop
 [Desktop Entry]
 Name=Firefox Stable
 Comment=Web Browser
@@ -194,7 +188,7 @@ Name=Open in private mode
 EOT
 
 # pipewire, wireplumber and qt5/6 for obs and xdg desktop portal hyprland
-# sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireless-tools wireplumber 
+sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireless-tools wireplumber 
 # echo "----------------------------------------------------------------------------xdg-desktop-portal-hyprland----------------------------------------------------------------------------"
 # sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireless-tools wireplumber libinih-dev libsystemd-dev qtbase5-dev qtdeclarative5-dev qt6-base-dev
 # sudo apt install -y rtkit qt6-wayland
@@ -221,7 +215,7 @@ EOT
 # wget https://github.com/claudiodangelis/qrcp/releases/download/0.10.1/qrcp_0.10.1_linux_x86_64.tar.gz 
 # tar xf qrcp_0.10.1_linux_x86_64.tar.gz
 # sudo chmod +x qrcp
-# mv ./qrcp ~/.local/bin/
+# mv ./qrcp $HOME/.local/bin/
 # cd ..
 # sudo rm -rf ./qrcp
 # 
@@ -233,6 +227,6 @@ EOT
 # 
 # 
 # echo "----------------------------------------------------------------------------copy over config files----------------------------------------------------------------------------"
-# yes | cp -ir ./home_dots ~/
+yes | cp -ir ./home_dots $HOME/
 # 
 # echo "logout or reboot system"
