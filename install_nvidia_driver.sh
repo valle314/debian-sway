@@ -6,8 +6,9 @@ sudo apt update
 sudo apt upgrade
 sudo apt install --no-install-recommends wget libvulkan1 build-essential gcc-multilib dkms
 sudo apt-get install linux-headers-$(uname -r)
-wget https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb
-sudo dpkg -i cuda-keyring_1.1-1_all.deb
+wget https://us.download.nvidia.com/tesla/550.54.14/nvidia-driver-local-repo-debian12-550.54.14_1.0-1_amd64.deb
+sudo dpkg -i nvidia-driver-local-repo-debian12-550.54.14_1.0-1_amd64.deb
+sudo cp /var/nvidia-driver-local-repo-debian12-550.54.14/nvidia-driver-local-64642CF5-keyring.gpg /usr/share/keyrings/
 sudo apt update
 sudo apt install cuda-drivers
 
