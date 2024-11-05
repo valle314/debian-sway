@@ -155,8 +155,8 @@ cd ..
 sudo rm -rf ./yt-dlp
  
 # dunst and authentication Agent
-# sudo apt install -y dunst polkit-kde-agent-1 
- 
+sudo apt install -y dunst policykit-1 # polkit-kde-agent-1 
+
 # pavucontrol
 sudo apt install --no-install-recommends -y pavucontrol 
  

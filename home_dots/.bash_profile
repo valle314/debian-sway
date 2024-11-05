@@ -10,6 +10,12 @@ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$HOME/.local/lib/x86_64-linux-gnu/pkgcon
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/x86_64-linux-gnu/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib/
 
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export XDG_CURRENT_DESKTOP=Hyprland
+export LIBVA_DRIVER_NAME=nvidia
+export WLR_NO_HARDWARE_CURSORS=1
+
 export TASKRC=~/.config/task/.taskrc
 export TASKDATA=~/.local/share/task/.task task list
 export EDITOR="nvim"

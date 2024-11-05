@@ -21,6 +21,7 @@ set $menu fuzzel
 # exec_always autotiling
 # https://github.com/ammgws/autotiling-rs
 exec_always --no-startup-id autotiling-rs 
+exec=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
 
 ### Output configuration
 #
