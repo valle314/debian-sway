@@ -10,7 +10,7 @@ ninja -C builddir/ install
 cd ..
 rm -rf ./libinput
 
-git clone https://gitlab.freedesktop.org/mesa/drm --branch libdrm-2.4.122 --single-branch --depth 1
+git clone https://gitlab.freedesktop.org/mesa/drm --branch libdrm-2.4.123 --single-branch --depth 1 # libdrm-2.4.122 libdrm-2.4.123
 cd drm
 meson setup --prefix=$HOME/.local builddir/
 ninja -C builddir/
