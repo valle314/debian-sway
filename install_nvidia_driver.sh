@@ -4,6 +4,8 @@ sudo rm /etc/apt/sources.list
 sudo cp -r ./sources.list /etc/apt/
 sudo apt update
 sudo apt upgrade
+sudo apt full-upgrade
+sudo apt autoremove
 sudo apt install --no-install-recommends wget libvulkan1 build-essential gcc-multilib dkms
 sudo apt-get install linux-headers-$(uname -r)
 wget https://us.download.nvidia.com/tesla/550.54.14/nvidia-driver-local-repo-debian12-550.54.14_1.0-1_amd64.deb
