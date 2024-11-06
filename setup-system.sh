@@ -227,6 +227,6 @@ sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-de
 # 
 # 
 # echo "----------------------------------------------------------------------------copy over config files----------------------------------------------------------------------------"
-yes | cp -ir ./home_dots $HOME/
+yes | cp -iar ./home_dots/. $HOME/
 # 
 # echo "logout or reboot system"
