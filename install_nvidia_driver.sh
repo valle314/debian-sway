@@ -4,15 +4,15 @@ sudo rm /etc/apt/sources.list
 sudo cp -r ./sources.list /etc/apt/
 sudo apt update
 sudo apt upgrade
-sudo apt full-upgrade
-sudo apt autoremove
 sudo apt install --no-install-recommends wget libvulkan1 build-essential gcc-multilib dkms
 sudo apt-get install linux-headers-$(uname -r)
-wget https://us.download.nvidia.com/tesla/550.54.14/nvidia-driver-local-repo-debian12-550.54.14_1.0-1_amd64.deb
-sudo dpkg -i nvidia-driver-local-repo-debian12-550.54.14_1.0-1_amd64.deb
-sudo cp /var/nvidia-driver-local-repo-debian12-550.54.14/nvidia-driver-local-64642CF5-keyring.gpg /usr/share/keyrings/
-sudo apt update
-sudo apt install cuda-drivers
+sudo apt purge nvidia*
+sudo apt purge libnvidia*
+sudo apt purge cuda*
+sudo apt autoremove
+wget https://developer.download.nvidia.com/compute/cuda/12.4.0/local_installers/cuda_12.4.0_550.54.14_linux.runsudo 
+sudo sh cuda_12.4.0_550.54.14_linux.run
+sudo rm ./cuda_12.4.0_550.54.14_linux.run
 
 echo "updating config for nvidia"
 sudo mkdir -p /etc/default/
