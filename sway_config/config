@@ -23,16 +23,11 @@ set $menu fuzzel
 exec_always --no-startup-id autotiling-rs 
 exec=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=Hyprland
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-# output * bg ~/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
+
+output * bg $HOME/pics/wallpaper/my_wallpaper.jpg fill
 output DP-1 mode 2560x1440@144Hz
         
-#
+
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration

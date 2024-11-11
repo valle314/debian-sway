@@ -29,4 +29,5 @@ export NOTEROOT=~/docs/notes
 # for sessions in neovim
 export SESSIONS=~/dev/sessions
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+# rust
+. "$HOME/.cargo/env"

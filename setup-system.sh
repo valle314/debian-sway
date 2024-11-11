@@ -40,6 +40,9 @@ mkdir -p $HOME/pics/wallpaper
 mkdir -p $HOME/videos
 cp -r ./wallpaper/my_wallpaper.jpg $HOME/pics/wallpaper/
 
+# config
+yes | cp -iar ./home_dots/. $HOME/
+
 # rust 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 . $HOME/.cargo/env
@@ -87,32 +90,31 @@ sudo apt install --no-install-recommends -y sioyek
 sudo apt install --no-install-recommends -y fuzzel
  
 # mpv
-# sudo apt install -y ffmpeg libavfilter-dev libass-dev libmpv-dev 
-sudo apt install --no-install-recommends -y ffmpeg libavfilter-dev libass-dev libmpv-dev 
-git clone https://github.com/mpv-player/mpv --branch v0.38.0 --single-branch --depth 1 # v0.35.1 v0.37.0 v0.38.0 v0.39.0
-cd ./mpv
-mkdir -p subprojects
-git clone https://code.videolan.org/videolan/libplacebo --branch v7.349.0 --single-branch --depth 1 --recursive subprojects/libplacebo # v6.338 v7.349.0
-meson setup build --default-library=static
-meson compile -C build
-cp -r ./build/mpv $HOME/.local/bin
-cd ..
+sudo apt install --no-install-recommends -y mpv 
+# sudo apt install --no-install-recommends -y ffmpeg libavfilter-dev libass-dev libmpv-dev 
+# git clone https://github.com/mpv-player/mpv --branch v0.38.0 --single-branch --depth 1 # v0.35.1 v0.37.0 v0.38.0 v0.39.0
+# cd ./mpv
+# mkdir -p subprojects
+# git clone https://code.videolan.org/videolan/libplacebo --branch v7.349.0 --single-branch --depth 1 --recursive subprojects/libplacebo # v6.338 v7.349.0
+# meson setup build --default-library=static
+# meson compile -C build
+# cp -r ./build/mpv $HOME/.local/bin
+# cd ..
 
-sudo rm -rf $HOME/.local/share/applications/mpv.desktop 
-mkdir -p $HOME/.local/share/applications/
-touch $HOME/.local/share/applications/mpv.desktop
-cat <<EOT >> $HOME/.local/share/applications/mpv.desktop
-[Desktop Entry]
-Type=Application
-Name=mpv Media Player
-Exec=mpv --player-operation-mode=pseudo-gui -- %U
-Terminal=false
-Categories=AudioVideo;Audio;Video;Player;TV;
-MimeType=application/ogg;application/x-ogg;application/mxf;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/vnd.dolby.heaac.1;audio/vnd.dolby.heaac.2;audio/aiff;audio/x-aiff;audio/m4a;audio/x-m4a;application/x-extension-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/mpeg2;audio/mpeg3;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/musepack;audio/x-musepack;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg2;video/x-mpeg3;video/mp4v-es;video/x-m4v;video/mp4;application/x-extension-mp4;video/divx;video/vnd.divx;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;audio/x-ms-asf;application/vnd.ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/avi;video/x-flic;video/fli;video/x-flc;video/flv;video/x-flv;video/x-theora;video/x-theora+ogg;video/x-matroska;video/mkv;audio/x-matroska;application/x-matroska;video/webm;audio/webm;audio/vorbis;audio/x-vorbis;audio/x-vorbis+ogg;video/x-ogm;video/x-ogm+ogg;application/x-ogm;application/x-ogm-audio;application/x-ogm-video;application/x-shorten;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;audio/eac3;audio/amr-wb;video/mp2t;audio/flac;audio/mp4;application/x-mpegurl;video/vnd.mpegurl;application/vnd.apple.mpegurl;audio/x-pn-au;video/3gp;video/3gpp;video/3gpp2;audio/3gpp;audio/3gpp2;video/dv;audio/dv;audio/opus;audio/vnd.dts;audio/vnd.dts.hd;audio/x-adpcm;application/x-cue;audio/m3u;
-StartupWMClass=mpv
-EOT
-
-sudo rm -rf ./mpv
+# sudo rm -rf $HOME/.local/share/applications/mpv.desktop 
+# mkdir -p $HOME/.local/share/applications/
+# touch $HOME/.local/share/applications/mpv.desktop
+# cat <<EOT >> $HOME/.local/share/applications/mpv.desktop
+# [Desktop Entry]
+# Type=Application
+# Name=mpv Media Player
+# Exec=mpv --player-operation-mode=pseudo-gui -- %U
+# Terminal=false
+# Categories=AudioVideo;Audio;Video;Player;TV;
+# MimeType=application/ogg;application/x-ogg;application/mxf;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/vnd.dolby.heaac.1;audio/vnd.dolby.heaac.2;audio/aiff;audio/x-aiff;audio/m4a;audio/x-m4a;application/x-extension-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/mpeg2;audio/mpeg3;audio/mpegurl;audio/x-mpegurl;audio/mpg;audio/x-mpg;audio/rn-mpeg;audio/musepack;audio/x-musepack;audio/ogg;audio/scpls;audio/x-scpls;audio/vnd.rn-realaudio;audio/wav;audio/x-pn-wav;audio/x-pn-windows-pcm;audio/x-realaudio;audio/x-pn-realaudio;audio/x-ms-wma;audio/x-pls;audio/x-wav;video/mpeg;video/x-mpeg2;video/x-mpeg3;video/mp4v-es;video/x-m4v;video/mp4;application/x-extension-mp4;video/divx;video/vnd.divx;video/msvideo;video/x-msvideo;video/ogg;video/quicktime;video/vnd.rn-realvideo;video/x-ms-afs;video/x-ms-asf;audio/x-ms-asf;application/vnd.ms-asf;video/x-ms-wmv;video/x-ms-wmx;video/x-ms-wvxvideo;video/x-avi;video/avi;video/x-flic;video/fli;video/x-flc;video/flv;video/x-flv;video/x-theora;video/x-theora+ogg;video/x-matroska;video/mkv;audio/x-matroska;application/x-matroska;video/webm;audio/webm;audio/vorbis;audio/x-vorbis;audio/x-vorbis+ogg;video/x-ogm;video/x-ogm+ogg;application/x-ogm;application/x-ogm-audio;application/x-ogm-video;application/x-shorten;audio/x-shorten;audio/x-ape;audio/x-wavpack;audio/x-tta;audio/AMR;audio/ac3;audio/eac3;audio/amr-wb;video/mp2t;audio/flac;audio/mp4;application/x-mpegurl;video/vnd.mpegurl;application/vnd.apple.mpegurl;audio/x-pn-au;video/3gp;video/3gpp;video/3gpp2;audio/3gpp;audio/3gpp2;video/dv;audio/dv;audio/opus;audio/vnd.dts;audio/vnd.dts.hd;audio/x-adpcm;application/x-cue;audio/m3u;
+# StartupWMClass=mpv
+# EOT
+# sudo rm -rf ./mpv
 
 
 # grim, slurp, swappy for screenshots
@@ -187,8 +189,12 @@ Exec=${HOME}/.local/share/firefox/firefox --private-window %u
 Name=Open in private mode
 EOT
 
-# pipewire, wireplumber and qt5/6 for obs and xdg desktop portal hyprland
-sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireless-tools wireplumber 
+# nerdfont
+wget -O Noto.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Noto.zip
+./home_dots/.local/scripts/nerd-font-install.sh Noto.zip
+
+# pipewire wireplumber 
+sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireplumber 
 # echo "----------------------------------------------------------------------------xdg-desktop-portal-hyprland----------------------------------------------------------------------------"
 # sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireless-tools wireplumber libinih-dev libsystemd-dev qtbase5-dev qtdeclarative5-dev qt6-base-dev
 # sudo apt install -y rtkit qt6-wayland
@@ -204,29 +210,21 @@ sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-de
 # sudo rm -rf ./xdg-desktop-portal-hyprland
 # sudo apt install --no-install-recommends -y xdg-desktop-portal
 # 
-# # keepassx 
-# echo "----------------------------------------------------------------------------keepassx----------------------------------------------------------------------------"
-# sudo apt install --no-install-recommends -y keepassx
-# 
-# # qrcp
-# echo "----------------------------------------------------------------------------qrcp----------------------------------------------------------------------------"
-# mkdir ./qrcp
-# cd ./qrcp
-# wget https://github.com/claudiodangelis/qrcp/releases/download/0.10.1/qrcp_0.10.1_linux_x86_64.tar.gz 
-# tar xf qrcp_0.10.1_linux_x86_64.tar.gz
-# sudo chmod +x qrcp
-# mv ./qrcp $HOME/.local/bin/
-# cd ..
-# sudo rm -rf ./qrcp
-# 
-# echo "----------------------------------------------------------------------------latex packages----------------------------------------------------------------------------"
-# sudo apt install --no-install-recommends -y texlive-base texlive-lang-german texlive-latex-extra texlive-science texlive-extra-utils
-# 
-# echo "----------------------------------------------------------------------------installing some utilities----------------------------------------------------------------------------"
-# sudo apt install --no-install-recommends -y calc translate-shell tldr ghostscript tesseract-ocr tesseract-ocr-deu 
-# 
-# 
-# echo "----------------------------------------------------------------------------copy over config files----------------------------------------------------------------------------"
-yes | cp -iar ./home_dots/. $HOME/
-# 
-# echo "logout or reboot system"
+# keepassx 
+sudo apt install --no-install-recommends -y keepassx
+ 
+# qrcp
+mkdir ./qrcp
+cd ./qrcp
+wget https://github.com/claudiodangelis/qrcp/releases/download/0.11.3/qrcp_0.11.3_linux_amd64.tar.gz 
+tar xf qrcp_0.11.3_linux_amd64.tar.gz
+sudo chmod +x qrcp
+mv ./qrcp $HOME/.local/bin/
+cd ..
+sudo rm -rf ./qrcp
+ 
+# latex 
+sudo apt install --no-install-recommends -y texlive-base texlive-lang-german texlive-latex-extra texlive-science texlive-extra-utils
+ 
+# translation and some other utilities
+sudo apt install --no-install-recommends -y calc translate-shell tldr ghostscript tesseract-ocr tesseract-ocr-deu 

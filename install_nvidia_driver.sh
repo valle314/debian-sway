@@ -10,9 +10,9 @@ sudo apt purge nvidia*
 sudo apt purge libnvidia*
 sudo apt purge cuda*
 sudo apt autoremove
-wget https://developer.download.nvidia.com/compute/cuda/12.4.0/local_installers/cuda_12.4.0_550.54.14_linux.runsudo 
-sudo sh cuda_12.4.0_550.54.14_linux.run
-sudo rm ./cuda_12.4.0_550.54.14_linux.run
+wget https://developer.download.nvidia.com/compute/cuda/12.6.2/local_installers/cuda_12.6.2_560.35.03_linux.run
+sudo sh cuda_12.6.2_560.35.03_linux.run
+sudo rm ./cuda_12.6.2_560.35.03_linux.run
 
 echo "updating config for nvidia"
 sudo mkdir -p /etc/default/
