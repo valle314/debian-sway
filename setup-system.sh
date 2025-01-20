@@ -215,12 +215,12 @@ sudo apt install --no-install-recommends -y texlive-base texlive-lang-german tex
 # translation and some other utilities
 sudo apt install --no-install-recommends -y calc translate-shell tldr ghostscript tesseract-ocr tesseract-ocr-deu 
 
-# screen recording 
-sudo apt install g++ meson libavutil-dev libavcodec-dev libavformat-dev libswscale-dev libpulse-dev # deps
-git clone https://github.com/ammen99/wf-recorder --branch v0.5.0 --single-branch --depth 1
-cd wf-recorder
-meson build --prefix=$HOME/.local --buildtype=release
-ninja -C build
+# screen recording TODO
+# sudo apt install g++ meson libavutil-dev libavcodec-dev libavformat-dev libswscale-dev libpulse-dev # deps
+# git clone https://github.com/ammen99/wf-recorder --branch v0.5.0 --single-branch --depth 1
+# cd wf-recorder
+# meson build --prefix=$HOME/.local --buildtype=release
+# ninja -C build
 # ninja -C build install
 
 
