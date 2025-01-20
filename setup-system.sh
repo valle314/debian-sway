@@ -157,7 +157,7 @@ cd ..
 sudo rm -rf ./yt-dlp
  
 # dunst and authentication Agent
-sudo apt install -y dunst policykit-1 # polkit-kde-agent-1 
+sudo apt install -y dunst libnotify4 policykit-1 # polkit-kde-agent-1 
 
 # pavucontrol
 sudo apt install --no-install-recommends -y pavucontrol 
@@ -195,21 +195,7 @@ wget -O Noto.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.
 
 # pipewire wireplumber 
 sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireplumber 
-# echo "----------------------------------------------------------------------------xdg-desktop-portal-hyprland----------------------------------------------------------------------------"
-# sudo apt install --no-install-recommends -y libpipewire-0.3-0 libpipewire-0.3-dev libpipewire-0.3-modules libwireplumber-0.4-0 libwireplumber-0.4-dev pipewire-bin pipewire-pulse pipewire wireless-tools wireplumber libinih-dev libsystemd-dev qtbase5-dev qtdeclarative5-dev qt6-base-dev
-# sudo apt install -y rtkit qt6-wayland
-# 
-# git clone https://github.com/hyprwm/xdg-desktop-portal-hyprland --branch v0.5.0 --single-branch
-# cd xdg-desktop-portal-hyprland
-# meson build --prefix=/usr
-# ninja -C build
-# cd hyprland-share-picker && make all && cd ..
-# sudo ninja -C build install
-# sudo cp ./hyprland-share-picker/build/hyprland-share-picker /usr/bin
-# cd ..
-# sudo rm -rf ./xdg-desktop-portal-hyprland
-# sudo apt install --no-install-recommends -y xdg-desktop-portal
-# 
+ 
 # keepassx 
 sudo apt install --no-install-recommends -y keepassx
  
@@ -228,3 +214,13 @@ sudo apt install --no-install-recommends -y texlive-base texlive-lang-german tex
  
 # translation and some other utilities
 sudo apt install --no-install-recommends -y calc translate-shell tldr ghostscript tesseract-ocr tesseract-ocr-deu 
+
+# screen recording 
+sudo apt install g++ meson libavutil-dev libavcodec-dev libavformat-dev libswscale-dev libpulse-dev # deps
+git clone https://github.com/ammen99/wf-recorder --branch v0.5.0 --single-branch --depth 1
+cd wf-recorder
+meson build --prefix=$HOME/.local --buildtype=release
+ninja -C build
+# ninja -C build install
+
+

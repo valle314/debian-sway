@@ -50,3 +50,5 @@ rm -rf ./sway
 
 mkdir -p $HOME/.config/sway
 cp ./sway_config/config $HOME/.config/sway
+
+sudo apt install --no-install-recommends -y swaybg 
